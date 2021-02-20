@@ -13,7 +13,7 @@ export default function StatTable({ currentPokemon }) {
   );
 
   return (
-    <table class="stat-block">
+    <table className="stat-block">
       <tbody>
         <tr className="cell">
           <td>

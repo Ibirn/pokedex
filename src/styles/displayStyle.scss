@@ -1,0 +1,26 @@
+.stat-block {
+  border: 1px solid #000000;
+  min-width: 50vw;
+  // align-content: center;
+}
+
+.stat-table {
+  width: 100%;
+}
+
+.inner-table {
+  width: 100%;
+  tbody > tr {
+    display: flex;
+    td {
+      flex: 1;
+    }
+  }
+}
+
+.stat-bg {
+  background-color: dimgrey;
+  height: 1rem;
+  margin: 2px;
+  width: 255px;
+}

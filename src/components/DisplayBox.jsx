@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import styled from "@emotion/styled";
+import "../styles/displayStyle.scss";
+
+import StatTable from "./StatTable";
 // Specifically, the card should have at least the pokemon name, height, weight, type(s), abilities and base stats (hp/atk/def/special-atk/special-def/speed)
 //Make your styling awesome. Try to match the pokemon type with the style of the card (eg. red/green etc.). Also, try to style the pokemon stats since they are numeric
 // Have a way to show/click through all the sprites of each pokemon, instead of just showing one
@@ -30,6 +33,7 @@ export default function DisplayBox({ currentPokemon }) {
     water: "6890F0",
   };
 
+  //creates a coloured border based on pokemon types
   const Border = styled.div`
     border-left: 1rem #${borderColours[0]} solid;
     border-top: 1rem #${borderColours[0]} solid;
@@ -41,6 +45,7 @@ export default function DisplayBox({ currentPokemon }) {
         : borderColours[0]} solid;
   `;
 
+  //Allows for sprites to be cycled
   const spriteSelector = (int) => {
     if (spriteIndex + int > sprites.length - 1) {
       setSpriteIndex(0);
@@ -51,6 +56,7 @@ export default function DisplayBox({ currentPokemon }) {
     }
   };
 
+  //helper function to set border colours
   const borderSelector = () => {
     let output = [];
     for (let type of currentPokemon.types) {
@@ -60,26 +66,28 @@ export default function DisplayBox({ currentPokemon }) {
   };
 
   useEffect(() => {
-    //use Lodash to get list of sprites in data
-    //set new sprites when currentPokemon changes.
     const spriteList = _.values(_.pickBy(currentPokemon.sprites, _.isString));
     setSprites(spriteList);
     setSpriteIndex(0);
-    console.log(sprites[0]);
 
     if (currentPokemon.name) {
-      console.log(borderSelector());
+      borderSelector();
     }
   }, [currentPokemon]);
 
-  return (
-    <div className="display-border">
-      <p>{currentPokemon.name}</p>
-      <Border>
-        <button onClick={() => spriteSelector(-1)}>prev</button>
-        <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
-        <button onClick={() => spriteSelector(1)}>next</button>
-      </Border>
-    </div>
-  );
+  if (currentPokemon.name) {
+    return (
+      <div className="display-border">
+        <p>{currentPokemon.name}</p>
+        <Border>
+          <button onClick={() => spriteSelector(-1)}>prev</button>
+          <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
+          <button onClick={() => spriteSelector(1)}>next</button>
+          <StatTable currentPokemon={currentPokemon} />
+        </Border>
+      </div>
+    );
+  } else {
+    return <div>Please search a pokemon!</div>;
+  }
 }

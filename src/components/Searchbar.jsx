@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Autocomplete from "./Autocomplete";
+import "../styles/searchbarStyle.scss";
 
 export default function Searchbar({ setCurrentPokemon }) {
   const [query, setQuery] = useState("");
@@ -33,9 +33,16 @@ export default function Searchbar({ setCurrentPokemon }) {
 
   //send request to pokeapi for a single pokemon's info
   const querySubmit = (e) => {
+    e.preventDefault();
     axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`).then((response) => {
       setCurrentPokemon(response.data);
     });
+  };
+
+  //select an item from suggestions
+  const selectSuggestion = (value) => {
+    setQuery(() => value);
+    setSuggestions(() => []);
   };
 
   //render pokemon whose name contains the query string
@@ -46,14 +53,16 @@ export default function Searchbar({ setCurrentPokemon }) {
     return (
       <ul>
         {suggestions.map((elem, ind) => (
-          <li key={ind}>{elem}</li>
+          <li onClick={() => selectSuggestion(elem)} key={ind}>
+            {elem}
+          </li>
         ))}
       </ul>
     );
   };
 
   return (
-    <div>
+    <div className="search-wrapper">
       <form>
         <input
           type="text"
@@ -64,9 +73,9 @@ export default function Searchbar({ setCurrentPokemon }) {
           autoComplete={"off"}
           value={query}
         />
-        <button onClick={(e) => querySubmit(e)}>Search</button>
       </form>
       {renderSuggestions()}
+      <button onClick={(e) => querySubmit(e)}>Search</button>
     </div>
   );
 }

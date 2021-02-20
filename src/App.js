@@ -11,7 +11,9 @@ function App() {
   }, [currentPokemon]);
   return (
     <div className="App">
-      <Searchbar setCurrentPokemon={setCurrentPokemon} />
+      <div className="app-component">
+        <Searchbar setCurrentPokemon={setCurrentPokemon} />
+      </div>
       <DisplayBox currentPokemon={currentPokemon} />
     </div>
   );

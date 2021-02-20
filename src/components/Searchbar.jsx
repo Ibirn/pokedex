@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function Searchbar(props) {
+export default function Searchbar({ setCurrentPokemon }) {
   const [query, setQuery] = useState("");
+  // console.log(props);
 
   const handleChange = (e) => {
-    setQuery(e.target.value.trim());
+    setQuery(e.target.value.trim().toLowerCase());
   };
 
   const querySubmit = (e) => {
     e.preventDefault();
     axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
+      setCurrentPokemon(response.data);
     });
   };
   //https://pokeapi.co/api/v2/pokemon/

@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Autocomplete(props) {
-  const [pokemonList, setPokemonList] = useState([]);
-  axios
-    .get(`https://pokeapi.co/api/v2/pokemon/?limit=1200`)
-    .then((response) => console.log("???", response.data));
+export default function Autocomplete({ suggestions, handleChange, query }) {
+  const renderSuggestions = () => {
+    if (suggestions.length === 0) {
+      return null;
+    }
+    return (
+      <ul>
+        {suggestions.map((elem, ind) => (
+          <li key={ind}>{elem}</li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <>
-      <div>
-        <input></input>
-      </div>
+      <input
+        type="text"
+        id="search-bar"
+        name="search-bar"
+        placeholder="Bulbasaur"
+        onChange={handleChange}
+        value={query}
+        autoComplete="off"
+      />
+      {renderSuggestions()}
     </>
   );
 }

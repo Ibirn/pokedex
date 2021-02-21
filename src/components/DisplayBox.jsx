@@ -69,7 +69,6 @@ export default function DisplayBox({ currentPokemon }) {
     const spriteList = _.values(_.pickBy(currentPokemon.sprites, _.isString));
     setSprites(spriteList);
     setSpriteIndex(0);
-
     if (currentPokemon.name) {
       borderSelector();
     }
@@ -77,17 +76,31 @@ export default function DisplayBox({ currentPokemon }) {
 
   if (currentPokemon.name) {
     return (
-      <div className="display-border">
-        <p>{currentPokemon.name}</p>
-        <Border>
-          <button onClick={() => spriteSelector(-1)}>prev</button>
-          <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
-          <button onClick={() => spriteSelector(1)}>next</button>
-          <StatTable currentPokemon={currentPokemon} />
-        </Border>
+      <div className="display-frame">
+        <div className="display-border">
+          <p>{currentPokemon.name}</p>
+          <Border>
+            <button onClick={() => spriteSelector(-1)}>prev</button>
+            <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
+            <button onClick={() => spriteSelector(1)}>next</button>
+            <StatTable currentPokemon={currentPokemon} />
+          </Border>
+        </div>
       </div>
     );
   } else {
-    return <div>Please search a pokemon!</div>;
+    return (
+      <div className="display-frame">
+        <div className="display-border">
+          <p>No Entry</p>
+          <Border>
+            {/* <button onClick={() => spriteSelector(-1)}>prev</button>
+        <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
+        <button onClick={() => spriteSelector(1)}>next</button>
+        <StatTable currentPokemon={currentPokemon} /> */}
+          </Border>
+        </div>
+      </div>
+    );
   }
 }

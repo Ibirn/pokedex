@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Headshot from "./Headshot";
 import _ from "lodash";
 import axios from "axios";
 import "../styles/randomPokemonStyle.scss";
 
-export default function RandomPokemon(props) {
+export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
   const [visitors, setVisitors] = useState({});
 
   useEffect(() => {
@@ -22,7 +21,18 @@ export default function RandomPokemon(props) {
           }));
         });
     }
-  }, []);
+    return () => {
+      setVisitors({});
+    };
+  }, [currentPokemon]);
+
+  const querySubmit = (e, name) => {
+    e.preventDefault();
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`).then((response) => {
+      console.log(response.data);
+      setCurrentPokemon(response.data);
+    });
+  };
 
   const generateHeadshots = () => {
     if (_.keys(visitors).length === 0) {
@@ -31,7 +41,10 @@ export default function RandomPokemon(props) {
     return (
       <>
         {_.keys(visitors).map((elem, ind) => (
-          <Headshot key={ind} address={visitors[elem]} name={elem} />
+          <div onClick={(e) => querySubmit(e, elem)} className="headshot">
+            <img className="headshot-image" src={visitors[elem]} alt={elem} />
+            <h5>{elem ? elem : "Loading..."}</h5>
+          </div>
         ))}
       </>
     );

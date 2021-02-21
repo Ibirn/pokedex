@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import _ from "lodash";
 import "../styles/searchbarStyle.scss";
 
 export default function Searchbar({ setCurrentPokemon }) {
@@ -34,9 +35,11 @@ export default function Searchbar({ setCurrentPokemon }) {
   //send request to pokeapi for a single pokemon's info
   const querySubmit = (e) => {
     e.preventDefault();
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`).then((response) => {
-      setCurrentPokemon(response.data);
-    });
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${_.lowerCase(query)}`)
+      .then((response) => {
+        setCurrentPokemon(response.data);
+      });
   };
 
   //select an item from suggestions
@@ -46,6 +49,7 @@ export default function Searchbar({ setCurrentPokemon }) {
   };
 
   //render pokemon whose name contains the query string
+  //lodash capitalize used here so that proper names are capitalized on client side though they need to be returned to lower case for API query
   const renderSuggestions = () => {
     if (suggestions.length === 0) {
       return null;
@@ -53,8 +57,13 @@ export default function Searchbar({ setCurrentPokemon }) {
     return (
       <ul>
         {suggestions.map((elem, ind) => (
-          <li onClick={() => selectSuggestion(elem)} key={ind}>
-            {elem}
+          <li
+            onClick={(e) => {
+              selectSuggestion(_.capitalize(elem));
+            }}
+            key={ind}
+          >
+            {_.capitalize(elem)}
           </li>
         ))}
       </ul>
@@ -74,8 +83,8 @@ export default function Searchbar({ setCurrentPokemon }) {
           value={query}
         />
       </form>
-      {renderSuggestions()}
       <button onClick={(e) => querySubmit(e)}>Search</button>
+      {renderSuggestions()}
     </div>
   );
 }

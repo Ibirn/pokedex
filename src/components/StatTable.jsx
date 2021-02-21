@@ -65,7 +65,7 @@ export default function StatTable({ currentPokemon }) {
               <tbody>
                 <tr>
                   {currentPokemon.abilities.map((ability, ind) => (
-                    <td class="abilities" key={ind}>
+                    <td className="abilities" key={ind}>
                       {ability.ability.name}
                     </td>
                   ))}

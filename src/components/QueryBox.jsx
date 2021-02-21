@@ -3,11 +3,14 @@ import Searchbar from "./Searchbar";
 import RandomPokemon from "./RandomPokemon";
 import "../styles/queryBoxStyle.scss";
 
-export default function SearchBox({ setCurrentPokemon }) {
+export default function SearchBox({ setCurrentPokemon, currentPokemon }) {
   return (
     <div className="query-frame">
       <Searchbar setCurrentPokemon={setCurrentPokemon} />
-      <RandomPokemon />
+      <RandomPokemon
+        currentPokemon={currentPokemon}
+        setCurrentPokemon={setCurrentPokemon}
+      />
     </div>
   );
 }

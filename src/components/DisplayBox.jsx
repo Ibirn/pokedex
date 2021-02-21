@@ -77,15 +77,22 @@ export default function DisplayBox({ currentPokemon }) {
   if (currentPokemon.name) {
     return (
       <div className="display-frame">
-        <div className="display-border">
-          <p>{currentPokemon.name}</p>
-          <Border>
-            <button onClick={() => spriteSelector(-1)}>prev</button>
-            <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
-            <button onClick={() => spriteSelector(1)}>next</button>
-            <StatTable currentPokemon={currentPokemon} />
-          </Border>
+        <div>
+          <p>{_.capitalize(currentPokemon.name)}</p>
+          <img
+            className="official-artwork"
+            src={currentPokemon.sprites.other["official-artwork"].front_default}
+            alt={currentPokemon.name}
+          />
         </div>
+        <div></div>
+
+        <Border>
+          <button onClick={() => spriteSelector(-1)}>prev</button>
+          <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
+          <button onClick={() => spriteSelector(1)}>next</button>
+          <StatTable currentPokemon={currentPokemon} />
+        </Border>
       </div>
     );
   } else {

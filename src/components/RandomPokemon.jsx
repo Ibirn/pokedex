@@ -41,11 +41,13 @@ export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
     return (
       <>
         {_.keys(visitors).map((elem, ind) => (
-          <div onClick={(e) => querySubmit(e, elem)} className="headshot">
-            <span>
-              <img className="headshot-image" src={visitors[elem]} alt={elem} />
-              <h5>{elem ? elem : "Loading..."}</h5>
-            </span>
+          <div
+            key={ind}
+            onClick={(e) => querySubmit(e, elem)}
+            className="headshot"
+          >
+            <img className="headshot-image" src={visitors[elem]} alt={elem} />
+            <h5>{elem ? elem : "Loading..."}</h5>
           </div>
         ))}
       </>

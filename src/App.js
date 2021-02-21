@@ -16,7 +16,6 @@ function App() {
         currentPokemon={currentPokemon}
         setCurrentPokemon={setCurrentPokemon}
       />
-
       <DisplayBox currentPokemon={currentPokemon} />
     </div>
   );

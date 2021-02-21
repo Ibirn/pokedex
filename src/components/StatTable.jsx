@@ -52,9 +52,9 @@ export default function StatTable({ currentPokemon }) {
             <table className="inner-table">
               <tbody>
                 <tr>
-                  <th width="50%">HEIGHT:</th>
+                  <th>HEIGHT:</th>
                   <td>{currentPokemon.height / 10}M</td>
-                  <th width="50%">WEIGHT:</th>
+                  <th>WEIGHT:</th>
                   <td>{currentPokemon.weight / 10}kG</td>
                 </tr>
               </tbody>
@@ -93,6 +93,8 @@ export default function StatTable({ currentPokemon }) {
                       HP
                     </Stat>
                   </td>
+                </tr>
+                <tr>
                   <td className="stat-bg attack">
                     <Stat
                       value={currentPokemon.stats[1].base_stat}
@@ -111,6 +113,8 @@ export default function StatTable({ currentPokemon }) {
                       DEF
                     </Stat>
                   </td>
+                </tr>
+                <tr>
                   <td className="stat-bg special-attack">
                     <Stat
                       value={currentPokemon.stats[3].base_stat}
@@ -129,6 +133,8 @@ export default function StatTable({ currentPokemon }) {
                       SP DEF
                     </Stat>
                   </td>
+                </tr>
+                <tr>
                   <td className="stat-bg speed">
                     <Stat
                       value={currentPokemon.stats[5].base_stat}

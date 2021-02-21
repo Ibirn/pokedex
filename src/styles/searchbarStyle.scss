@@ -1,21 +1,29 @@
 .search-wrapper {
   width: 100%;
-  border: 1px solid grey;
+  // border: 1px solid grey;
   font-family: Arial, Helvetica, sans-serif;
   font-size: medium;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    z-index: 10;
+  }
 
   input {
-    width: 100%;
+    width: 80%;
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
     padding: 10px 5px;
     box-sizing: border-box;
     outline: none;
+    border-radius: 1rem;
   }
 
   ul {
-    list-style-type: none;
+    // list-style-type: none;
     text-align: left;
     margin: 0;
     padding: 0;
@@ -23,6 +31,9 @@
     overflow: hidden;
     overflow-y: scroll;
     height: 200px;
+    width: 80%;
+    background-color: #f4f4f4;
+    list-style: none;
   }
 
   li {

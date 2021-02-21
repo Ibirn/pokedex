@@ -5,3 +5,8 @@
   height: 80vh;
   margin-top: 10vh;
 }
+
+.spine {
+  width: 2rem;
+  border: 1px solid black;
+}

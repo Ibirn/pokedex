@@ -72,18 +72,20 @@ export default function Searchbar({ setCurrentPokemon }) {
 
   return (
     <div className="search-wrapper">
-      <form>
-        <input
-          type="text"
-          id="search-bar"
-          name="search-bar"
-          placeholder="Bulbasaur"
-          onChange={handleChange}
-          autoComplete={"off"}
-          value={query}
-        />
-      </form>
-      <button onClick={(e) => querySubmit(e)}>Search</button>
+      <div>
+        <form>
+          <input
+            type="text"
+            id="search-bar"
+            name="search-bar"
+            placeholder="Bulbasaur"
+            onChange={handleChange}
+            autoComplete={"off"}
+            value={query}
+          />
+        </form>
+        <button onClick={(e) => querySubmit(e)}>Search</button>
+      </div>
       {renderSuggestions()}
     </div>
   );

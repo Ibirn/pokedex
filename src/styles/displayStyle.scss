@@ -1,9 +1,15 @@
 .display-frame {
   flex: 1;
-  border: 2px solid red;
-  margin-right: 10vw;
+  margin-left: 25%;
+  border: 2px solid rgb(108, 98, 94);
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
+.official-artwork {
+  height: 40%;
+  width: 40%;
+}
 .stat-block {
   border: 1px solid #000000;
 }

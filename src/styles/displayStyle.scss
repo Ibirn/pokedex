@@ -4,13 +4,36 @@
   border: 2px solid rgb(108, 98, 94);
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
+
+  div {
+    display: flex;
+
+    table {
+      width: 100%;
+    }
+  }
 }
 
 .official-artwork {
-  height: 40%;
+  height: auto;
   width: 40%;
 }
-.stat-block {
+
+.sprite-artwork {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-wrap: wrap;
+  div {
+    width: 100%;
+  }
+  .filler {
+    width: 96px;
+    height: 96px;
+  }
+}
+.stat-info {
   border: 1px solid #000000;
 }
 
@@ -31,7 +54,6 @@
 }
 
 .stat-bg {
-  // background-color: dimgrey;
   height: 1rem;
   margin: 2px;
   width: 255px;

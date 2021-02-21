@@ -66,33 +66,52 @@ export default function DisplayBox({ currentPokemon }) {
   };
 
   useEffect(() => {
-    const spriteList = _.values(_.pickBy(currentPokemon.sprites, _.isString));
-    setSprites(spriteList);
-    setSpriteIndex(0);
+    // const spriteList = _.values(_.pickBy(currentPokemon.sprites, _.isString));
     if (currentPokemon.name) {
+      setSprites([
+        currentPokemon.sprites.back_default,
+        currentPokemon.sprites.front_default,
+      ]);
       borderSelector();
     }
+    // setSpriteIndex(0);
   }, [currentPokemon]);
 
   if (currentPokemon.name) {
     return (
       <div className="display-frame">
         <div>
-          <p>{_.capitalize(currentPokemon.name)}</p>
-          <img
-            className="official-artwork"
-            src={currentPokemon.sprites.other["official-artwork"].front_default}
-            alt={currentPokemon.name}
-          />
+          <Border>
+            <p>{_.capitalize(currentPokemon.name)}</p>
+            <img
+              className="official-artwork"
+              src={
+                currentPokemon.sprites.other["official-artwork"].front_default
+              }
+              alt={currentPokemon.name}
+            />
+          </Border>
+          <div className="sprite-artwork">
+            <div>
+              <div className="filler"></div>
+              <img
+                src={sprites[1]}
+                alt={`${currentPokemon.name}_sprite_front`}
+              />
+            </div>
+            <div>
+              <img
+                src={sprites[0] ? sprites[0] : "/assets/pokeball.png"}
+                alt={`${currentPokemon.name}_sprite_back`}
+              />
+              <div className="filler"></div>
+            </div>
+          </div>
         </div>
-        <div></div>
 
-        <Border>
-          <button onClick={() => spriteSelector(-1)}>prev</button>
-          <img src={sprites[spriteIndex]} alt={`${currentPokemon.name}`} />
-          <button onClick={() => spriteSelector(1)}>next</button>
-          <StatTable currentPokemon={currentPokemon} />
-        </Border>
+        {/* <Border> */}
+        <StatTable currentPokemon={currentPokemon} />
+        {/* </Border> */}
       </div>
     );
   } else {

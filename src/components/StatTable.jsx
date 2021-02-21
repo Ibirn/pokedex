@@ -17,7 +17,7 @@ export default function StatTable({ currentPokemon }) {
   );
 
   return (
-    <div>
+    <div className="display-bottom">
       <table className="stat-info">
         <tbody>
           <tr>

@@ -43,6 +43,7 @@ export default function DisplayBox({ currentPokemon }) {
     border-bottom: 1rem #${borderColours[1]
         ? borderColours[1]
         : borderColours[0]} solid;
+    border-radius: inherit;
   `;
 
   //Allows for sprites to be cycled
@@ -80,38 +81,44 @@ export default function DisplayBox({ currentPokemon }) {
   if (currentPokemon.name) {
     return (
       <div className="display-frame">
-        <div>
-          <Border>
-            <p>{_.capitalize(currentPokemon.name)}</p>
-            <img
-              className="official-artwork"
-              src={
-                currentPokemon.sprites.other["official-artwork"].front_default
-              }
-              alt={currentPokemon.name}
-            />
-          </Border>
-          <div className="sprite-artwork">
-            <div>
-              <div className="filler"></div>
+        <Border>
+          <div className="display-top">
+            <div className="hero-image">
+              <p>{_.capitalize(currentPokemon.name)}</p>
               <img
-                src={sprites[1]}
-                alt={`${currentPokemon.name}_sprite_front`}
+                className="official-artwork"
+                src={
+                  currentPokemon.sprites.other["official-artwork"].front_default
+                }
+                alt={currentPokemon.name}
               />
+              {/* </Border> */}
             </div>
             <div>
-              <img
-                src={sprites[0] ? sprites[0] : "/assets/pokeball.png"}
-                alt={`${currentPokemon.name}_sprite_back`}
-              />
-              <div className="filler"></div>
+              {/* <Border> */}
+              <div className="sprite-artwork">
+                <div>
+                  <div className="filler"></div>
+                  <img
+                    src={sprites[1]}
+                    alt={`${currentPokemon.name}_sprite_front`}
+                  />
+                </div>
+                <div>
+                  <img
+                    src={sprites[0] ? sprites[0] : "/assets/pokeball.png"}
+                    alt={`${currentPokemon.name}_sprite_back`}
+                  />
+                  <div className="filler"></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* <Border> */}
-        <StatTable currentPokemon={currentPokemon} />
-        {/* </Border> */}
+          {/* <Border> */}
+          <StatTable currentPokemon={currentPokemon} />
+          {/* </Border> */}
+        </Border>
       </div>
     );
   } else {

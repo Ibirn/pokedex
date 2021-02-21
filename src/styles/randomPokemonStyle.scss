@@ -1,0 +1,14 @@
+.flex-wrapper {
+  display: flex;
+}
+
+.headshot {
+  width: 33%;
+  flex-wrap: wrap;
+}
+
+.headshot-image {
+  border: 1px solid blue;
+  min-height: 96px;
+  min-width: 96px;
+}

@@ -20,10 +20,9 @@
     margin: 0;
     padding: 0;
     border-top: 1px solid grey;
-  }
-
-  ul::before {
-    content: "";
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 200px;
   }
 
   li {

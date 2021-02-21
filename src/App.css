@@ -1,4 +1,7 @@
 .App {
   text-align: center;
   display: flex;
+  background-color: #f4f4f4;
+  height: 80vh;
+  margin-top: 10vh;
 }

@@ -6,7 +6,9 @@ import "../styles/queryBoxStyle.scss";
 export default function SearchBox({ setCurrentPokemon, currentPokemon }) {
   return (
     <div className="query-frame">
-      <Searchbar setCurrentPokemon={setCurrentPokemon} />
+      <div>
+        <Searchbar setCurrentPokemon={setCurrentPokemon} />
+      </div>
       <RandomPokemon
         currentPokemon={currentPokemon}
         setCurrentPokemon={setCurrentPokemon}

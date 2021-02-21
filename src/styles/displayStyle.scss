@@ -25,8 +25,31 @@
 }
 
 .stat-bg {
-  background-color: dimgrey;
+  // background-color: dimgrey;
   height: 1rem;
   margin: 2px;
   width: 255px;
+}
+
+.hit-points {
+  background-color: #e83b3b;
+}
+.attack {
+  background-color: #783a29;
+}
+
+.defense {
+  background-color: #2fb6c3;
+}
+
+.special-attack {
+  background-color: #69189c;
+}
+
+.special-defense {
+  background-color: #2a5684;
+}
+
+.speed {
+  background-color: #6fba3b;
 }

@@ -8,7 +8,13 @@
 
   div {
     display: flex;
-    z-index: 10;
+    // z-index: 10;
+    position: relative;
+    flex-direction: column;
+
+    div {
+      flex-direction: row;
+    }
   }
 
   input {
@@ -23,7 +29,7 @@
   }
 
   ul {
-    // list-style-type: none;
+    position: absolute;
     text-align: left;
     margin: 0;
     padding: 0;
@@ -34,14 +40,16 @@
     width: 80%;
     background-color: #f4f4f4;
     list-style: none;
+    border-bottom-left-radius: 1rem;
   }
 
   li {
     padding: 10px 5px;
+    z-index: 10;
     cursor: pointer;
   }
   li:hover {
     text-decoration: underline;
-    background-color: indianred;
+    background-color: #12c2f8;
   }
 }

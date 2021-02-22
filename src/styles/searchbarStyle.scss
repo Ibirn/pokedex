@@ -4,6 +4,7 @@
   font-size: medium;
   display: flex;
   flex-direction: column;
+  height: fit-content;
 
   div {
     display: flex;
@@ -50,4 +51,11 @@
     text-decoration: underline;
     background-color: #12c2f8;
   }
+}
+
+.error {
+  background-color: #f4f4f4;
+  border-radius: 1rem;
+  position: absolute;
+  margin-top: 1rem;
 }

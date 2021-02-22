@@ -8,6 +8,7 @@ export default function Searchbar({ setCurrentPokemon }) {
   const [pokemonList, setPokemonList] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [isShown, setIsShown] = useState(false);
+  const [error, setError] = useState(false);
 
   //check if the even was inside the autocomplete
   const catchBubble = (e) => {
@@ -20,7 +21,10 @@ export default function Searchbar({ setCurrentPokemon }) {
   };
 
   //show autocomplete while input is focused
-  const show = () => setIsShown(true);
+  const show = () => {
+    setError(false);
+    setIsShown(true);
+  };
   //hide autocomplete if the click is outside of the search-wrapper, otherwise, let the event pass.
   const hide = () => {
     if (!catchBubble) setIsShown(false);
@@ -59,6 +63,10 @@ export default function Searchbar({ setCurrentPokemon }) {
       .get(`https://pokeapi.co/api/v2/pokemon/${_.lowerCase(query)}`)
       .then((response) => {
         setCurrentPokemon(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(true);
       });
   };
 
@@ -92,6 +100,15 @@ export default function Searchbar({ setCurrentPokemon }) {
     }
   };
 
+  const renderError = () => {
+    return (
+      <div className="error">
+        <p>Something has gone wrong!</p>
+        <p>Please try a different Pokemon.</p>
+      </div>
+    );
+  };
+
   return (
     <div className="search-wrapper">
       <div>
@@ -111,6 +128,7 @@ export default function Searchbar({ setCurrentPokemon }) {
         </div>
         <div>{renderSuggestions()}</div>
       </div>
+      {error && renderError()}
     </div>
   );
 }

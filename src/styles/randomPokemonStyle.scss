@@ -24,3 +24,22 @@ h5 {
   border: 2px solid rgb(82, 75, 73);
   margin: 0 0 1rem 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .flex-wrapper {
+    margin: 0;
+    font-size: smaller;
+    .headshot {
+      margin: 0;
+    }
+    .headshot-image {
+      min-height: 32px;
+      min-width: 32px;
+      height: 32px;
+      width: 32px;
+      background-color: #12c2f8;
+      border: solid;
+      border-image: url("../assets/borderbox-dark.png") 25 / 10px 10px 10px 10px;
+    }
+  }
+}

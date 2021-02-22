@@ -130,3 +130,11 @@
 .speed {
   background-color: #6fba3b;
 }
+
+@media only screen and (max-width: 768px) {
+  .display-frame {
+    margin: 0;
+    width: 100%;
+    // height: 60px;
+  }
+}

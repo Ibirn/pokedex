@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DisplayBox from "./components/DisplayBox";
 import QueryBox from "./components/QueryBox";
 
@@ -27,10 +27,6 @@ function App() {
       { base_stat: 0 },
     ],
   });
-
-  useEffect(() => {
-    console.log(currentPokemon);
-  }, [currentPokemon]);
 
   return (
     <div className="App">

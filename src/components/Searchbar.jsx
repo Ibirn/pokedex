@@ -28,7 +28,6 @@ export default function Searchbar({ setCurrentPokemon }) {
 
   //hide autocomplete if the click is outside of the search-wrapper, otherwise, let the event pass.
   const handleClick = (e) => {
-    console.log(e);
     if (e.target && !catchBubble(e)) {
       return setIsShown(false);
     }

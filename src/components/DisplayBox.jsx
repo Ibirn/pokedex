@@ -10,8 +10,9 @@ import axios from "axios";
 // Have a way to show/click through all the sprites of each pokemon, instead of just showing one
 
 export default function DisplayBox({ currentPokemon }) {
-  const [sprites, setSprites] = useState([]);
+  const [sprites, setSprites] = useState([{ front: null, back: null }]);
   const [borderColours, setBorderColours] = useState([]);
+  const [spriteIndex, setSpriteIndex] = useState(0);
   const typeColours = {
     bug: "A8B820",
     dark: "705848",
@@ -48,6 +49,17 @@ export default function DisplayBox({ currentPokemon }) {
     height: 100%;
   `;
 
+  //Allows for sprites to be cycled
+  const spriteSelector = (int) => {
+    if (spriteIndex + int > sprites.length - 1) {
+      setSpriteIndex(0);
+    } else if (spriteIndex + int < 0) {
+      setSpriteIndex(sprites.length - 1);
+    } else {
+      setSpriteIndex((prev) => prev + int);
+    }
+  };
+
   //helper function to set border colours
   const borderSelector = () => {
     let output = [];
@@ -58,14 +70,30 @@ export default function DisplayBox({ currentPokemon }) {
   };
 
   useEffect(() => {
-    if (currentPokemon.name) {
-      setSprites([
-        currentPokemon.sprites.back_default,
-        currentPokemon.sprites.front_default,
-      ]);
-      borderSelector();
-    }
+    setSprites(() => [
+      {
+        front: currentPokemon.sprites.front_default,
+        back: currentPokemon.sprites.back_default,
+      },
+      {
+        front: currentPokemon.sprites.front_female,
+        back: currentPokemon.sprites.back_female,
+      },
+      {
+        front: currentPokemon.sprites.front_shiny,
+        back: currentPokemon.sprites.back_shiny,
+      },
+      {
+        front: currentPokemon.sprites.front_shiny_female,
+        back: currentPokemon.sprites.back_shiny_female,
+      },
+    ]);
+    borderSelector();
   }, [currentPokemon]);
+
+  useEffect(() => {
+    console.log("SP: ", sprites[spriteIndex]);
+  }, [sprites, spriteIndex]);
 
   return (
     <div className="display-frame">
@@ -86,17 +114,31 @@ export default function DisplayBox({ currentPokemon }) {
               <div>
                 <div className="filler"></div>
                 <img
-                  src={sprites[1]}
+                  src={
+                    sprites[spriteIndex].front
+                      ? sprites[spriteIndex].front
+                      : "/assets/pokeball.png"
+                  }
                   alt={`${currentPokemon.name}_sprite_front`}
                 />
               </div>
               <div>
                 <img
-                  src={sprites[0] ? sprites[0] : "/assets/pokeball.png"}
+                  src={
+                    sprites[spriteIndex].back
+                      ? sprites[spriteIndex].back
+                      : "/assets/pokeball.png"
+                  }
                   alt={`${currentPokemon.name}_sprite_back`}
                 />
                 <div className="filler"></div>
               </div>
+            </div>
+            <div>
+              <span>
+                <button onClick={() => spriteSelector(-1)}>Back</button>
+                <button onClick={() => spriteSelector(1)}>Next</button>
+              </span>
             </div>
           </div>
         </div>

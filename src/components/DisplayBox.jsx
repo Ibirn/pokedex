@@ -96,7 +96,7 @@ export default function DisplayBox({ currentPokemon }) {
       <Border>
         <div className="display-top">
           <div className="hero-image">
-            <p># {_.capitalize(currentPokemon.order)}</p>
+            <p># {_.capitalize(currentPokemon.id)}</p>
             <img
               className="official-artwork"
               src={

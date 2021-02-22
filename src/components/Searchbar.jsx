@@ -25,21 +25,28 @@ export default function Searchbar({ setCurrentPokemon }) {
     setError(false);
     setIsShown(true);
   };
+
   //hide autocomplete if the click is outside of the search-wrapper, otherwise, let the event pass.
-  const hide = () => {
-    if (!catchBubble) setIsShown(false);
+  const handleClick = (e) => {
+    console.log(e);
+    if (e.target && !catchBubble(e)) {
+      return setIsShown(false);
+    }
   };
 
   //create master list of pokemon to sort through for autocomplete, add event listeners to control the autocomplete showing/hiding
   useEffect(() => {
     document.getElementById("search-bar").addEventListener("focus", show);
-    document.getElementById("search-bar").addEventListener("blur", hide);
+    window.addEventListener("click", handleClick);
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/?limit=1200`)
       .then((response) => {
         let list = response.data.results.map((elem) => elem.name);
         setPokemonList(list);
       });
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, []);
 
   //handle text value changes, update autocomplete suggestions

@@ -28,6 +28,10 @@ function App() {
     ],
   });
 
+  useEffect(() => {
+    console.log(currentPokemon);
+  }, [currentPokemon]);
+
   return (
     <div className="App">
       <QueryBox

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import _ from "lodash";
 import NestedTable from "./NestedTable";
@@ -61,7 +61,7 @@ export default function StatTable({ currentPokemon, colors }) {
                     title={"TYPE:"}
                     children={() =>
                       currentPokemon.types.map((type, ind) => (
-                        <td>{_.capitalize(type.type.name)}</td>
+                        <td key={ind}>{_.capitalize(type.type.name)}</td>
                       ))
                     }
                   />
@@ -80,7 +80,7 @@ export default function StatTable({ currentPokemon, colors }) {
                     title={"ABILITIES:"}
                     children={() =>
                       currentPokemon.abilities.map((ability, ind) => (
-                        <td>{_.capitalize(ability.ability.name)}</td>
+                        <td key={ind}> {_.capitalize(ability.ability.name)}</td>
                       ))
                     }
                   />

@@ -44,7 +44,7 @@ export default function DisplayBox({ currentPokemon }) {
     border-bottom: 1rem #${borderColours[1]
         ? borderColours[1]
         : borderColours[0]} solid;
-    border-radius: inherit;
+
     height: 100%;
   `;
 

@@ -106,6 +106,7 @@ export default function Searchbar({ setCurrentPokemon }) {
     }
   };
 
+  //popup for anything going wrong with the API request
   const renderError = () => {
     return (
       <div className="error">

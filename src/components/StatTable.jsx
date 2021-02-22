@@ -1,46 +1,9 @@
 import React from "react";
-import styled from "@emotion/styled";
 import _ from "lodash";
 import NestedTable from "./NestedTable";
+import { InfoBlock, Stat, TdStyled } from "./StyledComponents";
 
 export default function StatTable({ currentPokemon, colors }) {
-  //fills stat bars
-  const Stat = styled.div(
-    {
-      height: "1rem",
-      textAlign: "left",
-      borderRadius: "1rem",
-    },
-    (props) => ({
-      width: `${(props.value / 255) * 100}%`,
-      backgroundColor: `#${props.color}`,
-    })
-  );
-  const InfoBlock = styled.div(
-    {
-      display: "flex",
-      flexDirection: "column",
-      borderRadius: "1rem",
-      width: "100%",
-      margin: "2px",
-    },
-    (props) => ({
-      backgroundColor: `#${props.color}`,
-      width: `${props.width}`,
-    })
-  );
-
-  //dynamic color for tables
-  const TdStyled = styled.td(
-    {
-      display: "flex",
-      justifyContent: "center",
-    },
-    (props) => ({
-      backgroundColor: `#${props.color}`,
-    })
-  );
-
   return (
     <div className="display-bottom">
       <table>
@@ -100,7 +63,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[0].base_stat}
                                   color={"ae2334"}
                                 >
-                                  HP
+                                  <div className="stat-text">HP</div>
                                 </Stat>
                               </td>
                             </tr>
@@ -110,7 +73,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[1].base_stat}
                                   color={"86482f"}
                                 >
-                                  ATK
+                                  <div className="stat-text">ATK</div>
                                 </Stat>
                               </td>
                             </tr>
@@ -120,7 +83,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[2].base_stat}
                                   color={"2c89af"}
                                 >
-                                  DEF
+                                  <div className="stat-text">DEF</div>
                                 </Stat>
                               </td>
                             </tr>
@@ -130,7 +93,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[3].base_stat}
                                   color={"48246d"}
                                 >
-                                  SP ATK
+                                  <div className="stat-text">SP ATK</div>
                                 </Stat>
                               </td>
                             </tr>
@@ -140,7 +103,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[4].base_stat}
                                   color={"214574"}
                                 >
-                                  SP DEF
+                                  <div className="stat-text">SP DEF</div>
                                 </Stat>
                               </td>
                             </tr>
@@ -150,7 +113,7 @@ export default function StatTable({ currentPokemon, colors }) {
                                   value={currentPokemon.stats[5].base_stat}
                                   color={"229443"}
                                 >
-                                  SPD
+                                  <div className="stat-text">SPD</div>
                                 </Stat>
                               </td>
                             </tr>

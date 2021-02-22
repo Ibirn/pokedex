@@ -13,6 +13,7 @@
 
     .hero-image {
       align-items: center;
+      justify-content: center;
       flex-direction: column-reverse;
       max-width: 40vw;
       flex: 1;
@@ -88,7 +89,6 @@
 
   tbody > tr {
     display: flex;
-    // padding: 2px;
 
     td {
       flex: 1;
@@ -96,7 +96,6 @@
       border-radius: 1rem;
     }
   }
-  // #stat-table > tbody > tr > td > div > table > tbody > tr
   .buffer {
     padding: 2px;
   }
@@ -107,6 +106,10 @@
   width: 255px;
 }
 
+.stat-text {
+  margin-left: 5px;
+  align-items: center;
+}
 .hit-points {
   background-color: #e83b3b;
 }
@@ -133,7 +136,7 @@
 
 @media only screen and (max-width: 768px) {
   .display-frame {
-    position: fixed;
+    position: absolute;
     margin: 0;
     width: 100%;
     top: 60px;

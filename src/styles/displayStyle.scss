@@ -5,18 +5,17 @@
   border: 2px solid rgb(108, 98, 94);
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
-  // height: fit-content;
   width: 100vw;
 
   .display-top {
     flex: 1;
 
     .hero-image {
+      border: 1px solid black;
       align-items: center;
       flex-direction: column-reverse;
-      height: auto;
       width: 80%;
-
+      max-width: 40vw;
       img {
         height: auto;
         width: 80%;
@@ -43,14 +42,13 @@
   background-image: url("../assets/battlegrass.png");
   background-repeat: no-repeat;
   background-size: 288px 192px;
-  flex: none;
+  flex: 1;
+  margin: 2rem;
 
   div {
     flex: none;
-    // width: 100%;
     justify-content: space-between;
     height: 96px;
-    // width: 96px;
   }
   .filler {
     flex: none;

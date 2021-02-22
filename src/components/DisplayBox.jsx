@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 import "../styles/displayStyle.scss";
 
 import StatTable from "./StatTable";
+import axios from "axios";
 // Specifically, the card should have at least the pokemon name, height, weight, type(s), abilities and base stats (hp/atk/def/special-atk/special-def/speed)
 //Make your styling awesome. Try to match the pokemon type with the style of the card (eg. red/green etc.). Also, try to style the pokemon stats since they are numeric
 // Have a way to show/click through all the sprites of each pokemon, instead of just showing one
 
 export default function DisplayBox({ currentPokemon }) {
   const [sprites, setSprites] = useState([]);
-  const [spriteIndex, setSpriteIndex] = useState(0);
   const [borderColours, setBorderColours] = useState([]);
   const typeColours = {
     bug: "A8B820",
@@ -31,6 +31,7 @@ export default function DisplayBox({ currentPokemon }) {
     rock: "B8A038",
     steel: "B8B8D0",
     water: "6890F0",
+    "---": "523c40",
   };
 
   //creates a coloured border based on pokemon types
@@ -44,18 +45,8 @@ export default function DisplayBox({ currentPokemon }) {
         ? borderColours[1]
         : borderColours[0]} solid;
     border-radius: inherit;
+    height: 100%;
   `;
-
-  //Allows for sprites to be cycled
-  const spriteSelector = (int) => {
-    if (spriteIndex + int > sprites.length - 1) {
-      setSpriteIndex(0);
-    } else if (spriteIndex + int < 0) {
-      setSpriteIndex(sprites.length - 1);
-    } else {
-      setSpriteIndex((prev) => prev + int);
-    }
-  };
 
   //helper function to set border colours
   const borderSelector = () => {
@@ -67,7 +58,6 @@ export default function DisplayBox({ currentPokemon }) {
   };
 
   useEffect(() => {
-    // const spriteList = _.values(_.pickBy(currentPokemon.sprites, _.isString));
     if (currentPokemon.name) {
       setSprites([
         currentPokemon.sprites.back_default,
@@ -75,7 +65,6 @@ export default function DisplayBox({ currentPokemon }) {
       ]);
       borderSelector();
     }
-    // setSpriteIndex(0);
   }, [currentPokemon]);
 
   if (currentPokemon.name) {
@@ -84,7 +73,7 @@ export default function DisplayBox({ currentPokemon }) {
         <Border>
           <div className="display-top">
             <div className="hero-image">
-              <p>{_.capitalize(currentPokemon.name)}</p>
+              <p># {_.capitalize(currentPokemon.order)}</p>
               <img
                 className="official-artwork"
                 src={
@@ -92,10 +81,8 @@ export default function DisplayBox({ currentPokemon }) {
                 }
                 alt={currentPokemon.name}
               />
-              {/* </Border> */}
             </div>
             <div>
-              {/* <Border> */}
               <div className="sprite-artwork">
                 <div>
                   <div className="filler"></div>
@@ -114,10 +101,7 @@ export default function DisplayBox({ currentPokemon }) {
               </div>
             </div>
           </div>
-
-          {/* <Border> */}
           <StatTable currentPokemon={currentPokemon} colors={borderColours} />
-          {/* </Border> */}
         </Border>
       </div>
     );

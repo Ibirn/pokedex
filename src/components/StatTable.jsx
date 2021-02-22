@@ -16,10 +16,8 @@ export default function StatTable({ currentPokemon, colors }) {
       backgroundColor: `#${props.color}`,
     })
   );
-  useEffect(() => {
-    console.log(colors);
-  }, [colors]);
 
+  //dynamic color for tables
   const TdStyled = styled.td({}, (props) => ({
     backgroundColor: `#${props.color}`,
   }));

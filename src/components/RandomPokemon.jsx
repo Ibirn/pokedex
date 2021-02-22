@@ -6,6 +6,7 @@ import "../styles/randomPokemonStyle.scss";
 export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
   const [visitors, setVisitors] = useState({});
 
+  //pull 6 random pokemon to display to users
   useEffect(() => {
     const randomId = () => {
       return Math.floor(Math.random() * 898 + 1);
@@ -26,10 +27,10 @@ export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
     };
   }, [currentPokemon]);
 
+  //makes random pokemon clickable links for the pokedex
   const querySubmit = (e, name) => {
     e.preventDefault();
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`).then((response) => {
-      console.log(response.data);
       setCurrentPokemon(response.data);
     });
   };
@@ -53,10 +54,6 @@ export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
       </>
     );
   };
-
-  useEffect(() => {
-    console.log(visitors);
-  }, [visitors]);
 
   return <div className="flex-wrapper">{generateHeadshots()}</div>;
 }

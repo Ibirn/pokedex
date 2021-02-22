@@ -91,10 +91,6 @@ export default function DisplayBox({ currentPokemon }) {
     borderSelector();
   }, [currentPokemon]);
 
-  useEffect(() => {
-    console.log("SP: ", sprites[spriteIndex]);
-  }, [sprites, spriteIndex]);
-
   return (
     <div className="display-frame">
       <Border>
@@ -109,7 +105,7 @@ export default function DisplayBox({ currentPokemon }) {
               alt={currentPokemon.name}
             />
           </div>
-          <div>
+          <div className="sprite-wrapper">
             <div className="sprite-artwork">
               <div>
                 <div className="filler"></div>

@@ -41,6 +41,18 @@
   }
 }
 
+.sprite-wrapper {
+  flex-direction: column;
+  div:nth-child(2) {
+    width: 100%;
+    span {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  }
+}
+
 .display-bottom table {
   border-spacing: 0;
   width: 100%;
@@ -55,7 +67,10 @@
   background-image: url("../assets/battlegrass.png");
   background-repeat: no-repeat;
   background-size: 288px 192px;
-  border: 1rem div {
+  flex-direction: row;
+  border: 2px solid rgb(82, 75, 73);
+  margin: 2rem;
+  div {
     flex: none;
     justify-content: space-between;
     height: 96px;

@@ -116,7 +116,7 @@ export default function DisplayBox({ currentPokemon }) {
           </div>
 
           {/* <Border> */}
-          <StatTable currentPokemon={currentPokemon} />
+          <StatTable currentPokemon={currentPokemon} colors={borderColours} />
           {/* </Border> */}
         </Border>
       </div>

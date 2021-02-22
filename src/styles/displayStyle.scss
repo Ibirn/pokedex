@@ -5,11 +5,14 @@
   border: 2px solid rgb(108, 98, 94);
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
+  // height: fit-content;
+  width: 100vw;
 
   .display-top {
     flex: 1;
 
     .hero-image {
+      align-items: center;
       flex-direction: column-reverse;
       height: auto;
       width: 80%;
@@ -22,8 +25,6 @@
   }
 
   div {
-    flex: 1;
-
     div {
       display: flex;
     }
@@ -34,30 +35,28 @@
   }
 }
 
-// .official-artwork {
-//   height: auto;
-//   width: 80%;
-// }
-
 .sprite-artwork {
-  height: 100%;
-  width: 100%;
+  border: 1px solid black;
   flex-wrap: wrap;
-  flex-direction: column;
+  width: min-content;
+  height: min-content;
+  background-image: url("../assets/battlegrass.png");
+  background-repeat: no-repeat;
+  background-size: 288px 192px;
+  flex: none;
 
   div {
-    width: 100%;
+    flex: none;
+    // width: 100%;
     justify-content: space-between;
+    height: 96px;
+    // width: 96px;
   }
   .filler {
-    min-width: 96px;
-    min-height: 96px;
-    height: auto;
-    width: auto;
+    flex: none;
+    width: 192px;
+    height: 96px;
   }
-}
-.stat-info {
-  border: 1px solid #000000;
 }
 
 .stat-table {
@@ -66,12 +65,15 @@
 
 .inner-table {
   width: 100%;
+  border-radius: 1rem;
 
   tbody > tr {
     display: flex;
 
     td {
       flex: 1;
+      background-color: cornsilk;
+      border-radius: 1rem;
     }
   }
 }

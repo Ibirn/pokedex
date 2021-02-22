@@ -1,27 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import _ from "lodash";
 
-export default function StatTable({ currentPokemon }) {
+export default function StatTable({ currentPokemon, colors }) {
   //fills stat bars
   const Stat = styled.div(
     {
       height: "1rem",
       textAlign: "left",
       borderRight: "1px solid white",
+      borderRadius: "1rem",
     },
     (props) => ({
       width: `${(props.value / 255) * 100}%`,
       backgroundColor: `#${props.color}`,
     })
   );
+  useEffect(() => {
+    console.log(colors);
+  }, [colors]);
+
+  const TdStyled = styled.td({}, (props) => ({
+    backgroundColor: `#${props.color}`,
+  }));
 
   return (
     <div className="display-bottom">
-      <table className="stat-info">
+      <table>
         <tbody>
           <tr>
-            <td>
+            <TdStyled color={colors[0]}>
               <strong>NAME:</strong>
               <table className="inner-table">
                 <tbody>
@@ -30,26 +38,29 @@ export default function StatTable({ currentPokemon }) {
                   </tr>
                 </tbody>
               </table>
-            </td>
+            </TdStyled>
           </tr>
 
           <tr>
-            <td>
+            <TdStyled color={colors[0]}>
               <strong>TYPE:</strong>
               <table className="inner-table">
                 <tbody>
                   <tr>
                     {currentPokemon.types.map((type, ind) => (
-                      <td key={ind}>{_.capitalize(type.type.name)}</td>
+                      <TdStyled color={colors[ind]} key={ind}>
+                        {" "}
+                        {_.capitalize(type.type.name)}
+                      </TdStyled>
                     ))}
                   </tr>
                 </tbody>
               </table>
-            </td>
+            </TdStyled>
           </tr>
 
           <tr>
-            <td>
+            <TdStyled color={colors[0]}>
               <table className="inner-table">
                 <tbody>
                   <tr>
@@ -60,11 +71,11 @@ export default function StatTable({ currentPokemon }) {
                   </tr>
                 </tbody>
               </table>
-            </td>
+            </TdStyled>
           </tr>
 
           <tr>
-            <td>
+            <TdStyled color={colors[0]}>
               <strong>ABILITIES:</strong>
               <table className="inner-table">
                 <tbody>
@@ -77,7 +88,7 @@ export default function StatTable({ currentPokemon }) {
                   </tr>
                 </tbody>
               </table>
-            </td>
+            </TdStyled>
           </tr>
         </tbody>
       </table>
@@ -85,7 +96,7 @@ export default function StatTable({ currentPokemon }) {
       <table>
         <tbody>
           <tr>
-            <td>
+            <TdStyled color={colors[1] ? colors[1] : colors[0]}>
               <strong>STATS:</strong>
               <table className="inner-table">
                 <tbody>
@@ -151,7 +162,7 @@ export default function StatTable({ currentPokemon }) {
                   </tr>
                 </tbody>
               </table>
-            </td>
+            </TdStyled>
           </tr>
         </tbody>
       </table>

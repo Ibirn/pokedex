@@ -48,7 +48,7 @@ export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
             className="headshot"
           >
             <img className="headshot-image" src={visitors[elem]} alt={elem} />
-            <h5>{elem ? elem : "Loading..."}</h5>
+            <h5>{elem ? _.capitalize(elem) : "Loading..."}</h5>
           </div>
         ))}
       </>

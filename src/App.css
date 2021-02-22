@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   display: flex;
-  background-color: #f4f4f4;
+  background-color: rgb(214, 82, 85);
   height: 100vh;
+  align-items: center;
+  background-image: url("assets/bg.png");
 }

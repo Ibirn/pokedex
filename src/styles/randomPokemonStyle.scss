@@ -1,11 +1,13 @@
 .flex-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .headshot {
-  width: 100%;
   flex-wrap: wrap;
+  margin: 0 1rem;
 }
 
 .headshot-image {
@@ -14,4 +16,11 @@
   background-color: #12c2f8;
   border: solid;
   border-image: url("../assets/borderbox-dark.png") 25 / 10px 10px 10px 10px;
+}
+
+h5 {
+  background-color: #f4f4f4;
+  border-radius: 1rem;
+  border: 2px solid rgb(82, 75, 73);
+  margin: 0 0 1rem 0;
 }

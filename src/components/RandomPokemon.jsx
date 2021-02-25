@@ -36,23 +36,23 @@ export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
   };
 
   const generateHeadshots = () => {
-    if (_.keys(visitors).length === 0) {
-      return null;
+    if (_.keys(visitors).length >= 6) {
+      return (
+        <>
+          {_.keys(visitors).map((elem, ind) => (
+            <div
+              key={ind}
+              onClick={(e) => querySubmit(e, elem)}
+              className="headshot"
+            >
+              <img className="headshot-image" src={visitors[elem]} alt={elem} />
+              <h5>{elem ? _.capitalize(elem) : "Loading..."}</h5>
+            </div>
+          ))}
+        </>
+      );
     }
-    return (
-      <>
-        {_.keys(visitors).map((elem, ind) => (
-          <div
-            key={ind}
-            onClick={(e) => querySubmit(e, elem)}
-            className="headshot"
-          >
-            <img className="headshot-image" src={visitors[elem]} alt={elem} />
-            <h5>{elem ? _.capitalize(elem) : "Loading..."}</h5>
-          </div>
-        ))}
-      </>
-    );
+    return null;
   };
 
   return <div className="flex-wrapper">{generateHeadshots()}</div>;

@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+const TableStyled = styled.table({}, (props) => ({
+  backgroundColor: `#${props.color}`,
+}));
+
 const Stat = styled.div(
   {
     height: "1rem",
@@ -12,6 +16,7 @@ const Stat = styled.div(
     backgroundColor: `#${props.color}`,
   })
 );
+
 const InfoBlock = styled.div(
   {
     display: "flex",
@@ -37,4 +42,4 @@ const TdStyled = styled.td(
   })
 );
 
-export { TdStyled, Stat, InfoBlock };
+export { TdStyled, Stat, InfoBlock, TableStyled };

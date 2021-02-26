@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 
-const TableStyled = styled.table({}, (props) => ({
-  backgroundColor: `#${props.color}`,
+const BackgroundTable = styled.table({}, (props) => ({
+  background: `linear-gradient(135deg, #${props.colors[0]} 50%, #${
+    props.colors[1] ? props.colors[1] : props.colors[0]
+  } 50%)`,
 }));
 
 const Stat = styled.div(
@@ -42,4 +44,4 @@ const TdStyled = styled.td(
   })
 );
 
-export { TdStyled, Stat, InfoBlock, TableStyled };
+export { TdStyled, Stat, InfoBlock, BackgroundTable };

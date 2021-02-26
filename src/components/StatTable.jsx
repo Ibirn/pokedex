@@ -1,12 +1,12 @@
 import React from "react";
 import _ from "lodash";
 import NestedTable from "./NestedTable";
-import { InfoBlock, Stat, TdStyled, TableStyled } from "./StyledComponents";
+import { InfoBlock, Stat, TdStyled, BackgroundTable } from "./StyledComponents";
 
 export default function StatTable({ currentPokemon, colors }) {
   return (
     <div className="display-bottom">
-      <table>
+      <BackgroundTable colors={colors}>
         <tbody>
           <tr>
             <td>
@@ -167,7 +167,7 @@ export default function StatTable({ currentPokemon, colors }) {
             </td>
           </tr>
         </tbody>
-      </table>
+      </BackgroundTable>
     </div>
   );
 }

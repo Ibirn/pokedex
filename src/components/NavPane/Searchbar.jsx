@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import _ from "lodash";
-import "../styles/searchbarStyle.scss";
+import "../../styles/searchbarStyle.scss";
 import Error from "./Error";
 
 export default function Searchbar({ setCurrentPokemon }) {

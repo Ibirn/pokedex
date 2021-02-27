@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import DisplayBox from "./components/DisplayBox";
-import QueryBox from "./components/QueryBox";
+import QueryBox from "./components/NavPane/QueryBox";
 
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState({

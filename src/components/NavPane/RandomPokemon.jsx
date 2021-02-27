@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import axios from "axios";
-import "../styles/randomPokemonStyle.scss";
+import "../../styles/randomPokemonStyle.scss";
 
 export default function RandomPokemon({ setCurrentPokemon, currentPokemon }) {
   const [visitors, setVisitors] = useState({});

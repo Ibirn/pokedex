@@ -140,6 +140,10 @@ export default function DisplayBox({ currentPokemon }) {
         </div>
         <StatTable currentPokemon={currentPokemon} colors={borderColours} />
       </Border>
+      <footer>
+        Pokémon and All Respective Names are Trademark & © of Nintendo
+        1996-2021. Pokedex powered by the lovely people at https://pokeapi.co
+      </footer>
     </div>
   );
 }

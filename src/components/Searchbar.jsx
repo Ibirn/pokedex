@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import _ from "lodash";
 import "../styles/searchbarStyle.scss";
+import Error from "./Error";
 
 export default function Searchbar({ setCurrentPokemon }) {
   const [query, setQuery] = useState("");
   const [pokemonList, setPokemonList] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [isShown, setIsShown] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
-  //check if the even was inside the autocomplete
+  //check if the event was inside the autocomplete
   const catchBubble = (e) => {
     for (let elem of e.path) {
       if (elem.className === "search-wrapper") {
@@ -65,15 +66,22 @@ export default function Searchbar({ setCurrentPokemon }) {
   //send request to pokeapi for a single pokemon's info
   const querySubmit = (e) => {
     e.preventDefault();
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${_.lowerCase(query)}`)
-      .then((response) => {
-        setCurrentPokemon(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(true);
-      });
+
+    if (query === "") {
+      setError("You must search a valid pokemon name!");
+    } else {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${_.lowerCase(query)}`)
+        .then((response) => {
+          setCurrentPokemon(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(
+            "Something has gone wrong with pokeAPI! Please try another pokemon."
+          );
+        });
+    }
   };
 
   //select an item from suggestions
@@ -135,7 +143,8 @@ export default function Searchbar({ setCurrentPokemon }) {
         </div>
         <div>{renderSuggestions()}</div>
       </div>
-      {error && renderError()}
+      {error && <Error message={error} />}
+      {/* {error && renderError()} */}
     </div>
   );
 }

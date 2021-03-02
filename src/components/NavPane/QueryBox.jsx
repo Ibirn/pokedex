@@ -8,6 +8,7 @@ export default function SearchBox({ setCurrentPokemon, currentPokemon }) {
     <div className="query-frame">
       <div>
         <Searchbar setCurrentPokemon={setCurrentPokemon} />
+        <button>AECHELLO</button>
       </div>
       <RandomPokemon
         currentPokemon={currentPokemon}

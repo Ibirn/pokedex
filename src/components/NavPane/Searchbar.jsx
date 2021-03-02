@@ -144,7 +144,6 @@ export default function Searchbar({ setCurrentPokemon }) {
         <div>{renderSuggestions()}</div>
       </div>
       {error && <Error message={error} />}
-      {/* {error && renderError()} */}
     </div>
   );
 }

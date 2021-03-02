@@ -4,11 +4,6 @@ import styled from "@emotion/styled";
 import "../styles/displayStyle.scss";
 
 import StatTable from "./StatTable";
-import axios from "axios";
-// Specifically, the card should have at least the pokemon name, height, weight, type(s), abilities and base stats (hp/atk/def/special-atk/special-def/speed)
-//Make your styling awesome. Try to match the pokemon type with the style of the card (eg. red/green etc.). Also, try to style the pokemon stats since they are numeric
-// Have a way to show/click through all the sprites of each pokemon, instead of just showing one
-
 export default function DisplayBox({ currentPokemon }) {
   const [sprites, setSprites] = useState([{ front: null, back: null }]);
   const [borderColours, setBorderColours] = useState([]);

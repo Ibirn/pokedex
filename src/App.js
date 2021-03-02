@@ -2,7 +2,12 @@ import "./App.css";
 import React, { useState } from "react";
 import DisplayBox from "./components/DisplayBox";
 import QueryBox from "./components/NavPane/QueryBox";
+import { BrowserRouter, Route } from "react-router-dom";
 
+{
+  /* <Route exact path="/register" component={Register} />
+</BrowserRouter> */
+}
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState({
     name: "---",
@@ -34,7 +39,13 @@ function App() {
         currentPokemon={currentPokemon}
         setCurrentPokemon={setCurrentPokemon}
       />
-      <DisplayBox currentPokemon={currentPokemon} />
+      <BrowserRouter>
+        <Route
+          exact
+          path="/"
+          render={(props) => <DisplayBox currentPokemon={currentPokemon} />}
+        />
+      </BrowserRouter>
     </div>
   );
 }

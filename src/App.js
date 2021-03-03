@@ -1,13 +1,9 @@
 import "./App.css";
 import React, { useState } from "react";
-import DisplayBox from "./components/DisplayBox";
+import DisplayBox from "./components/StatsPane/DisplayBox";
 import QueryBox from "./components/NavPane/QueryBox";
 import { BrowserRouter, Route } from "react-router-dom";
 
-{
-  /* <Route exact path="/register" component={Register} />
-</BrowserRouter> */
-}
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState({
     name: "---",

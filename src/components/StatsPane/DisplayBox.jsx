@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import styled from "@emotion/styled";
-import "../styles/displayStyle.scss";
+import "../../styles/displayStyle.scss";
 
 import StatTable from "./StatTable";
 export default function DisplayBox({ currentPokemon }) {
@@ -101,28 +101,30 @@ export default function DisplayBox({ currentPokemon }) {
             />
           </div>
           <div className="sprite-wrapper">
-            <div className="sprite-artwork">
-              <div>
-                <div className="filler"></div>
-                <img
-                  src={
-                    sprites[spriteIndex].front
-                      ? sprites[spriteIndex].front
-                      : "/assets/pokeball.png"
-                  }
-                  alt={`${currentPokemon.name}_sprite_front`}
-                />
-              </div>
-              <div>
-                <img
-                  src={
-                    sprites[spriteIndex].back
-                      ? sprites[spriteIndex].back
-                      : "/assets/pokeball.png"
-                  }
-                  alt={`${currentPokemon.name}_sprite_back`}
-                />
-                <div className="filler"></div>
+            <div>
+              <div className="sprite-artwork">
+                <div>
+                  <div className="filler"></div>
+                  <img
+                    src={
+                      sprites[spriteIndex].front
+                        ? sprites[spriteIndex].front
+                        : "/assets/pokeball.png"
+                    }
+                    alt={`${currentPokemon.name}_sprite_front`}
+                  />
+                </div>
+                <div>
+                  <img
+                    src={
+                      sprites[spriteIndex].back
+                        ? sprites[spriteIndex].back
+                        : "/assets/pokeball.png"
+                    }
+                    alt={`${currentPokemon.name}_sprite_back`}
+                  />
+                  <div className="filler"></div>
+                </div>
               </div>
             </div>
             <div>

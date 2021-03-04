@@ -28,19 +28,22 @@ function App() {
       { base_stat: 0 },
     ],
   });
+  // <BrowserRouter>
+  //   <Route
+  //     exact
+  //     path="/"
+  //     render={(props) => }
+  //   />
+  // </BrowserRouter>
 
   return (
     <div className="App">
-      <QueryBox
-        currentPokemon={currentPokemon}
-        setCurrentPokemon={setCurrentPokemon}
-      />
       <BrowserRouter>
-        <Route
-          exact
-          path="/"
-          render={(props) => <DisplayBox currentPokemon={currentPokemon} />}
+        <QueryBox
+          currentPokemon={currentPokemon}
+          setCurrentPokemon={setCurrentPokemon}
         />
+        <DisplayBox currentPokemon={currentPokemon} />
       </BrowserRouter>
     </div>
   );

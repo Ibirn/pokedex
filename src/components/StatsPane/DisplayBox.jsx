@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import styled from "@emotion/styled";
 import "../../styles/displayStyle.scss";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import StatTable from "./StatTable";
+import DexInfo from "./DexInfo";
 export default function DisplayBox({ currentPokemon }) {
   const [sprites, setSprites] = useState([{ front: null, back: null }]);
   const [borderColours, setBorderColours] = useState([]);
@@ -135,7 +137,20 @@ export default function DisplayBox({ currentPokemon }) {
             </div>
           </div>
         </div>
-        <StatTable currentPokemon={currentPokemon} colors={borderColours} />
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <StatTable currentPokemon={currentPokemon} colors={borderColours} />
+          )}
+        />
+        <Route
+          exact
+          path="/dex"
+          render={(props) => (
+            <DexInfo currentPokemon={currentPokemon} colors={borderColours} />
+          )}
+        />
       </Border>
       <footer>
         Pokémon and All Respective Names are Trademark & © of Nintendo
